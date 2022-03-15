@@ -1,12 +1,13 @@
 package uaslp.objetos.list.linkedlist;
 
-public class LinkedListIterator {
+import uaslp.objetos.list.Iterator;
 
+public class LinkedListIterator implements Iterator {
 
     private Node currentNode;
 
-    LinkedListIterator(Node startNode){
-        currentNode=startNode;
+    LinkedListIterator(Node starNode){
+        currentNode = starNode;
     }
 
     public boolean hasNext(){
@@ -14,9 +15,8 @@ public class LinkedListIterator {
     }
 
     public String next(){
-        String data= currentNode.data;
-
-        currentNode=currentNode.next;
+        String data = currentNode.data;
+        currentNode = currentNode.next;
 
         return data;
     }

@@ -1,61 +1,75 @@
+import uaslp.objetos.list.List;
+import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.arraylist.ArrayList;
-import uaslp.objetos.list.arraylist.ArrayListIterator;
+import uaslp.objetos.list.linkedlist.LinkedList;
 
-public class Main {
+public class  Main {
+    public static void main(String[] Args) {
+        //inicializo
+        List team1 = new LinkedList();
+        List team2 = new LinkedList();
+        List team3 = new LinkedList();
 
-    public static void main(String[] args) {
+        System.out.println("CON LISTAS TIPO LINKEDLIST");
+        testingList(team1, team2, team3);
+        System.out.println();
 
-        ArrayList team1 = new ArrayList();
-        ArrayList team2 = new ArrayList();
-        ArrayList team3 = new ArrayList();
+        team1 = new ArrayList();
+        team2 = new ArrayList();
+        team3 = new ArrayList();
 
-        team1.addAtTail("Jesús");
-        team1.addAtTail("Salomón");
-        team1.addAtTail("Yael");
+        System.out.println("CON LISTAS TIPO ARRAYLIST");
+        testingList(team1, team2, team3);
+    }
 
-        team2.addAtFront("Cristian");
+    public static void testingList(List team1, List team2, List team3){
+        team1.addAtTail("Anahi");
+        team1.addAtTail("Rebeca");
+        team1.addAtTail("Imelda");
+
+        team2.addAtFront("Angel");
+        team2.addAtFront("Santiago");
         team2.addAtFront("Daniel");
-        team2.addAtFront("Diego");
 
-        team3.addAtFront("Imelda");
+        team3.addAtFront("Marina");
 
-        ArrayListIterator iterator;
+        Iterator iterator;
 
         iterator = team1.getIterator();
 
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()){
             String name = iterator.next();
             System.out.println(name);
         }
-
         System.out.println();
+
         iterator = team2.getIterator();
 
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()){
             String name = iterator.next();
             System.out.println(name);
         }
 
-        System.out.println();
         team1.remove(0);
         team1.addAtFront("Rebeca");
+        System.out.println();
         System.out.println("Team 1 tiene: " + team1.getSize() + " integrantes");
 
         iterator = team1.getIterator();
 
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()){
             String name = iterator.next();
             System.out.println(name);
         }
 
-        System.out.println();
         team2.remove(2);
         team2.addAtTail("Rita");
+        System.out.println();
         System.out.println("Team 2 tiene: " + team2.getSize() + " integrantes");
 
         iterator = team2.getIterator();
 
-        while (iterator.hasNext()) {
+        while (iterator.hasNext()){
             String name = iterator.next();
             System.out.println(name);
         }
@@ -76,7 +90,7 @@ public class Main {
             System.out.println(name);
         }
 
-        if (team1.getAt(1).equals("Salomón")){
+        if (team1.getAt(1).equals("Salomon")){
             team1.setAt(1,"Luis");
         }
 
@@ -89,6 +103,5 @@ public class Main {
             String name = iterator.next();
             System.out.println(name);
         }
-
     }
 }
