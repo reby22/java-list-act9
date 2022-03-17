@@ -1,11 +1,18 @@
 package uaslp.objetos.list.linkedlist;
 
-class Node {
-    String data;
-    Node next;
-    Node previous;
+//Modificador de acceso
 
-    Node(String data){
+// El soporte a el pilar: Encapsulación
+// private
+// public
+// package-private / default
+
+class Node <T>{//  -> Las clases solo pueden ser públicas o package-private
+    T data;
+    Node<T> next;
+    Node<T> previous;
+
+    Node(T data) {
         this.data = data;
     }
 }

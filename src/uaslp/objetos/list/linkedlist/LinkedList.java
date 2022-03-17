@@ -3,99 +3,108 @@ package uaslp.objetos.list.linkedlist;
 import uaslp.objetos.list.Iterator;
 import uaslp.objetos.list.List;
 
-//Cambiamos, agregamos implements
-public class LinkedList implements List {
-    private Node head;
-    private Node tail;
+public class LinkedList <T> implements List <T>{
+    private Node<T> head;
+    private Node<T> tail;
     private int size;
 
-    public void addAtTail(String data){
-        Node node = new Node(data);
+    public void addAtTail(T data) {
+        Node<T> node = new Node<>(data);
 
-        if(size == 0){
+        if (size == 0) {
             head = node;
         } else {
             tail.next = node;
             node.previous = tail;
         }
+
         tail = node;
         size++;
     }
 
-    public void addAtFront(String data){
-        Node node = new Node(data);
+    public void addAtFront(T data) {
+        Node<T> node = new Node<>(data);
 
-        if (size == 0){
+        if (size == 0) {
             tail = node;
-        }else{
+        } else {
             head.previous = node;
         }
         node.next = head;
         head = node;
-        size++;
 
+        size++;
     }
 
-    public  void remove(int index){
-        Node node = findNode(index);
+    public void remove(int index) {
+        Node<T> node = findNode(index);
 
         if(node == null){
             return;
         }
+
         if(size == 1){
             head = null;
             tail = null;
         } else if(node == head){
-            head = head.next;
-            head.previous = null;
+            head = node.next;
+            if(head != null){
+                head.previous = null;
+            }
         } else if(node == tail){
-            tail = tail.previous;
-            tail.next = null;
-        } else{
+            tail = node.previous;
+            if(tail != null){
+                tail.next = null;
+            }
+        } else {
             node.previous.next = node.next;
             node.next.previous = node.previous;
         }
         size--;
     }
 
-    public void removeAll(){
+    public void removeAll() {
         head = null;
         tail = null;
         size = 0;
     }
 
-    public void setAt(int index, String data){
-        Node node = findNode(index);
+    public void setAt(int index, T data) {
+        Node<T> node = findNode(index);
 
-        if (node != null){
+        if(node != null){
             node.data = data;
         }
     }
 
-    public String getAt(int index){
-        Node node = findNode(index);
+    /**
+     * @param index 0-index
+     * @return element at position index
+     */
+    public T getAt(int index) {
+        Node<T> node = findNode(index);
 
         return node == null ? null : node.data;
     }
 
-    public int getSize(){
+    public Iterator<T> getIterator() {
+        return new LinkedListIterator<>(head);
+    }
+
+    public int getSize() {
         return size;
     }
 
-    public Iterator getIterator(){
-        return new LinkedListIterator(head);
-    }
+    private Node<T> findNode(int index) {
 
-    public Node findNode(int index){
-
-        if (index < 0 || index > size){
+        if(index < 0 || index >= size){
             return null;
         }
 
-        Node node = head;
+        Node<T> node = head;
         int currentIndex = 0;
 
-        while (currentIndex != index){
+        while (currentIndex != index) {
             currentIndex++;
             node = node.next;
         }
