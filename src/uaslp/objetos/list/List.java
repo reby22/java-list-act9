@@ -1,20 +1,16 @@
 package uaslp.objetos.list;
 
-public interface List <T>{
+import uaslp.objetos.list.exception.NotNullValuesAllowedException;
+import uaslp.objetos.list.exception.NotValidIndexException;
 
-    void addAtTail(T data);
+public interface List<T>{
 
-    void addAtFront(T data);
-
-    void remove(int index);
-
+    void addAtTail(T data) throws NotNullValuesAllowedException;
+    void addAtFront(T data) throws NotNullValuesAllowedException;
     void removeAll();
-
-    void setAt(int index, T data);
-
-    T getAt(int index);
-
+    void remove(int index) throws NotValidIndexException;
+    void setAt(int index,T data) throws NotValidIndexException, NotNullValuesAllowedException;
+    T getAt(int index) throws NotValidIndexException;
     Iterator<T> getIterator();
-
     int getSize();
 }
