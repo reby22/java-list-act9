@@ -1,4 +1,5 @@
 package uaslp.objetos.list.linkedlist;
+
 import uaslp.objetos.list.List;
 import uaslp.objetos.list.exception.NotNullValuesAllowedException;
 import uaslp.objetos.list.exception.NotValidIndexException;
@@ -15,8 +16,6 @@ public class LinkedList<T> implements List<T> {
         }
 
         Node<T> node=new Node<>(data);
-
-        //node.data=data;
 
         if(size==0)
         {
@@ -53,23 +52,13 @@ public class LinkedList<T> implements List<T> {
     public void remove(int index) throws NotValidIndexException{
         Node<T> node = findNode(index);
 
-        if(node == null){
-            return;
-        }
-
         if(size == 1){
             head = null;
             tail = null;
         } else if(node == head){
             head = node.next;
-            if(head != null){
-                head.previous = null;
-            }
         } else if(node == tail){
             tail = node.previous;
-            if(tail != null){
-                tail.next = null;
-            }
         } else {
             node.previous.next = node.next;
             node.next.previous = node.previous;
@@ -99,14 +88,12 @@ public class LinkedList<T> implements List<T> {
 
         Node<T> node = findNode(index);
 
-        if(node != null){
-            node.data = data;
-        }
+        node.data = data;
     }
 
     private Node<T> findNode(int index) throws NotValidIndexException{
         if(index < 0 || index >= size){
-            throw new NotValidIndexException(index); //throw recibe un parametro y recibe un objeto(por eso es new)
+            throw new NotValidIndexException(index);
         }
 
         Node<T> node = head;
@@ -119,10 +106,6 @@ public class LinkedList<T> implements List<T> {
 
         return node;
     }
-
-    /*
-    public void removeAllWithValue(T data){
-    }*/
 
     @Override
     public int getSize(){
