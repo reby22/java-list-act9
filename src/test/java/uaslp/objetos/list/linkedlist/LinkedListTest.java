@@ -8,12 +8,6 @@ import uaslp.objetos.list.exception.NotValidIndexException;
 
 public class LinkedListTest {
 
-    //Inicialización / Preparación
-    //Ejecución -> Llamar al método probado
-    //Validación -> debe de ser automática
-
-    //TDD -> Test Driven Development
-
     @Test
     public void givenANewList_whenGetSize_thenResultIsZero(){
         //Given:
