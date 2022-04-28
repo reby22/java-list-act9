@@ -273,7 +273,7 @@ public class LinkedListTest {
     }
 
     @Test
-    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverThreeElements() throws NotNullValuesAllowedException {
+    public void givenAListWithThreeElements_whenGetIterator_thenIteratorWorksOverThreeElements() throws NotNullValuesAllowedException, NotValidIndexException {
         //Given:
         LinkedList<String> list=new LinkedList<>(); //Crea un objeto de la lista
 
